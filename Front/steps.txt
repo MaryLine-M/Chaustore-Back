@@ -1,0 +1,23 @@
+
+CHAUSTORE V2
+
+
+1) finish Chaustore v1 (back-office) : 
+
+- function add
+- function delete
+- function update
+- function view product
+
+--> try to resolve problems with 'stock'
+
+--> add security options for DB
+
+
+(create repository on git hub)
+
+2) create schema db
+
+3) create php files for show products
+
+4)create form for uses inscription / connexion
