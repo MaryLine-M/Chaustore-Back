@@ -1,6 +1,7 @@
 
 CHAUSTORE V2
 
+TO DO-----------
 
 1) finish Chaustore v1 (back-office) : 
 
@@ -8,16 +9,39 @@ CHAUSTORE V2
 - function delete
 - function update
 - function view product
+- try to resolve problems with 'stock'
+- add security options for DB
 
---> try to resolve problems with 'stock'
+- check repository on github  (tidy folders and files)----> ok 07/08/19
 
---> add security options for DB
+2) Chaustore v2:
+- create schema db ---------------> ok 08/10/19 
+- create table users, dump sql file
+- commit db file .sql
 
 
-(create repository on git hub)
+3) 
+- create files for show products
+- front development...
 
-2) create schema db
+4)
+- create form for users inscription / connexion
+- verify and add security
 
-3) create php files for show products
 
-4)create form for uses inscription / connexion
+      .-'\
+   .-'  `/\
+.-'      `/\
+\         `/\
+ \         `/\
+  \    _-   `/\       _.--.
+   \    _-   `/`-..--\     )
+    \    _-   `,','  /    ,')
+     `-_   -   ` -- ~   ,','
+      `-              ,','
+       \,--.    ____==-~
+        \   \_-~\
+         `_-~_.-'
+ _ _ _ _ _ \-~_ _ _ _ _ _ _ _ _ 
+
+
