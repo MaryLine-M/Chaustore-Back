@@ -10,12 +10,9 @@
 
 <head>
 
-    <meta charset="utf-8">
-
+		<meta charset="utf-8">
 
 		<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
-
-
 
     	<link href="../shoes.css" rel="stylesheet" type="text/css">
 
@@ -30,8 +27,17 @@
 		<?php require_once '../menuHead.php' ?>
 	
 		<div class=list>
-			<h2>STOCK<br><a href="addShoes.php" class="buttonAdd">+ Add</a></h2>
+			<h2>STOCK<br><a href="addStock.php" class="buttonAdd">+ Add</a></h2>
 				
+			<?php
+				/*$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON stock.product_id = product_id INNER JOIN size ON stock.size_id = size_id ORDER by product_id';*/
+						
+				$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON product_id = product.name INNER JOIN size ON size_id = size.name ORDER by product_id';
+						
+				$req5 = mysqli_query($connect,$stocks);
+						//var_dump ($req5); ?>
+
+			
 				<table>
 					<thead>
 						<tr>
@@ -43,53 +49,34 @@
 					</thead>
 						
 					<tbody>
-						<?php
 						
-							/*$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON stock.product_id = product_id INNER JOIN size ON stock.size_id = size_id ORDER by product_id';*/
-						
-						
-						$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON product_id = product.name INNER JOIN size ON size_id = size.name ORDER by product_id';
-						
-						$req5 = mysqli_query($connect,$stocks);
-
-					
-						//var_dump ($req5);
-
-						
-						while ($result = mysqli_fetch_array($req5)){
+						<?php while ($result = mysqli_fetch_array($req5)){
 							//var_dump ($result);
-  						//for ($i=0; $i < count($result) ; $i++) {
+  						//for ($i=0; $i < count($result) ; $i++) { ?>
  
   						
-            			echo "<tr>";
-							echo "<td> {$result['product.id']} </td>";
-							echo "<td> {$result['size.id']} </td>";
-							echo "<td> {$result['stock']} </td>";
-
-							echo "<td width=200>";
-								echo '<a class="btn-update" href="updateShoes.php">Modify</a>';
-								echo ' ';
-								echo '<a class="btn-delete" href="deleteShoes.php">Delete</a>';
-							echo "</td>";
+            			<tr>
+							<td><?php echo $result['product.id']; ?></td>
+							<td><?php echo $result['size.id']; ?></td>
+							<td><?php echo $result['stock']; ?> </td>
+							<td width=200>";
+								<a class="btn-update" href="updateStock.php">Modify</a>
+								
+								<a class="btn-delete" href="deleteStock.php?id=<?php echo $result['stock.id']; ?>">Delete</a>
+							</td>
 						
-						echo "</tr>";
+						</tr>
 							
-						
-						}
-						
-							   
-				?>
 					</tbody>
 				
-						</table>
+				<?php } ?>
+					
+			</table>
 				
-				
-				
-			</div>
+		</div>
 								
 	</div>
     
-   
     
 </body>
     

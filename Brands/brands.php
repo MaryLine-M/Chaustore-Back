@@ -9,12 +9,9 @@
 
 <head>
 
-    <meta charset="utf-8">
-
+		<meta charset="utf-8">
 
 		<link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
-
-
 
     	<link href="../shoes.css" rel="stylesheet" type="text/css">
 
@@ -29,8 +26,14 @@
 		<?php require_once '../menuHead.php'?>
 	
 		<div class=list>
-			<h2>BRAND<br><a href="addShoes.php" class="buttonAdd">+ Add</a></h2>
+			<h2>BRAND<br><a href="addBrands.php" class="buttonAdd">+ Add</a></h2>
 				
+			<?php
+				$brands= 'select id, name, logo
+						FROM brand order by id';
+				$req1 = mysqli_query($connect,$brands); 
+				//var_dump ($req); ?>
+			
 				<table>
 					<thead>
 						<tr>
@@ -42,51 +45,29 @@
 					</thead>
 						
 					<tbody>
-						<?php
 						
-					
-						$brands= 'select id, name, logo
-						FROM brand order by id';
-						
-						$req1 = mysqli_query($connect,$brands);
-
-					
-						//var_dump ($req);
-
-						
-						while ($result = mysqli_fetch_array($req1)){
-							//var_dump ($result);
-  						//for ($i=0; $i < count($result) ; $i++) {
- 
-  						
-            			echo "<tr>";
-							echo "<td> {$result['id']} </td>";								echo "<td> {$result['name']} </td>";
-							echo "<td> {$result['logo']} </td>";
+						<?php while ($result = mysqli_fetch_array($req1)){ ?>
 							
-							echo "<td width=200>";
-								echo '<a class="btn-update" href="updateShoes.php">Modify</a>';
-								echo ' ';
-								echo '<a class="btn-delete" href="deleteShoes.php">Delete</a>';
-							echo "</td>";
+            			<tr>
+							<td><?php echo $result['id'];?></td>
+							<td><?php echo $result['name'];?></td>
+							<td><?php echo $result['logo'];?></td>
+							<td width=200>
+								<a class="btn-update" href="updateBrands.php">Modify</a>
+								
+								<a class="btn-delete" href="deleteBrands.php?=id<?php echo $result['brand.id'];?>">Delete</a>
+							</td>
+						</tr>
 						
-						echo "</tr>";
-							
-						
-						}
-						
-							   
-				?>
 					</tbody>
+					
+				<?php } ?>
+			
+			</table>
 				
-						</table>
-				
-				
-				
-			</div>
+		</div>
 								
 	</div>
-    
-   
     
 </body>
     
