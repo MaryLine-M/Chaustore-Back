@@ -105,7 +105,7 @@ $pwd ='Admin1';
 			<p>
 				<label for="Username"> Nom administrateur *</label>
 					
-					<input type="text" name="username" placeholder="Nom utilisateur" value="<?php if(!empty($_POST['username']))
+					<input type="text" name="username" autocomplete="off" placeholder="Nom utilisateur" value="<?php if(!empty($_POST['username']))
 					echo $_POST['username'];?>"/>
 			</p>
   

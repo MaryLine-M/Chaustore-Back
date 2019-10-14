@@ -55,7 +55,7 @@
 							<td width=200>
 								<a class="btn-update" href="updateColor.php">Modify</a>
 								
-								<a class="btn-delete" href="deleteColor.php?id=<?php echo $result['color.id']; ?>">Delete</a>
+								<a class="btn-delete" href="deleteColor.php?id=<?php echo $result['id']; ?>">Delete</a>
 							</td>
 						
 						</tr>
