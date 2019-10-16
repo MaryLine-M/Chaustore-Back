@@ -1,6 +1,4 @@
-<?php 
-
-	require_once '../connect.php';
+<?php require_once '../connect.php';
 
 	function checkInput($data){
 		$data = trim($data);
@@ -8,7 +6,6 @@
 		$data = htmlspecialchars($data);
 		return $data;	
 	}
-
 ?>
 
 
@@ -25,7 +22,7 @@
 
     	<link href="../shoes.css" rel="stylesheet" type="text/css">
 
-    <title>CHAUSTORE</title>
+    <title>CHAUSTORE Espace administrateur</title>
 
 </head>
 
@@ -38,25 +35,27 @@
 		
 		<div class="list">
 			
-	<?php 
-			if(!empty($_GET['id'])){
+			<?php 
+				if(!empty($_GET['id'])){
+					
+				$id = checkInput($_GET['id']);
+				}
 
-	$id = checkInput($_GET['id']);
-	}
-
-	if(!empty($_POST))
-		{
-		$id = checkInput($_POST['id']);
-		$req = "DELETE FROM color WHERE id = $id";
-		$sup = mysqli_query($connect, $req);
+					if(!empty($_POST)){
+						$id = checkInput($_POST['id']);
+						$req = "DELETE FROM color WHERE id = $id";
 		
-		if ($sup){
-			header("Location: colors.php");
-		} else {echo '<p class="alert"> Une erreur est survenue impossible de supprimer cet élément</p>';}
-	}
-	?>
+						$sup = mysqli_query($connect, $req);
+		
+					if ($sup){
+						header("Location: colors.php");
+					} else {
+						echo '<p class="alert"> Une erreur est survenue impossible de supprimer cet élément</p>';}
+				}
+			?>
 				
 			<form class="" role="form" action="deleteColor.php" method="post">
+				
 				<input type="hidden" name="id" value="<?php echo $id; ?>"/>
 				
 				<p class="alert">Êtes-vous sûr de vouloir supprimer cette couleur ?</p>

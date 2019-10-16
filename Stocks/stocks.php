@@ -16,8 +16,8 @@
 
     	<link href="../shoes.css" rel="stylesheet" type="text/css">
 
-    <title>CHAUSTORE</title>
-
+	<title>CHAUSTORE Espace Administrateur</title>
+	
 </head>
 
 <body>
