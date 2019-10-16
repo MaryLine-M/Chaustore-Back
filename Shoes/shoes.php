@@ -60,7 +60,7 @@
 							<td width=300>
 								<a class="btn-view" title="voir le produit" href="viewShoes.php">See product</a>
 								
-								<a class="btn-update" title="modifier" href="updateShoes.php?id=<?php echo $result['product.id'];?>">Modify</a>
+								<a class="btn-update" title="modifier" href="updateShoes.php?id=<?php echo $result['id'];?>">Modify</a>
 								
 								<a class="btn-delete" href="deleteShoes.php?id=<?php echo $result['id'];?>">Delete</a>
 							</td>

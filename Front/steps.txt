@@ -6,7 +6,7 @@ TO DO-----------
 1) finish Chaustore v1 (back-office) : 
 
 - function add
-- function delete
+- function delete ----> in progress 14/10
 - function update
 - function view product
 - try to resolve problems with 'stock'
