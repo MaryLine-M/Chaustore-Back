@@ -27,6 +27,8 @@
 	
 		<div class=list>
 			<h2>BRAND<br><a href="addBrands.php" class="buttonAdd">+ Add</a></h2>
+			
+			<?php require_once '../successAlert.php' ?>
 				
 			<?php
 				$brands= 'select id, name, logo
@@ -53,9 +55,9 @@
 							<td><?php echo $result['name'];?></td>
 							<td><?php echo $result['logo'];?></td>
 							<td width=200>
-								<a class="btn-update" href="updateBrands.php">Modify</a>
+								<a class="btn-update" href="updateBrands.php?id=<?php echo $result['id'];?>">Modify</a>
 								
-								<a class="btn-delete" href="deleteBrands.php?=id<?php echo $result['brand.id'];?>">Delete</a>
+								<a class="btn-delete" href="deleteBrands.php?id=<?php echo $result['id'];?>">Delete</a>
 							</td>
 						</tr>
 						

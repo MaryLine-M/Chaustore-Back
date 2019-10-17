@@ -47,7 +47,7 @@
 					$sup = mysqli_query($connect, $req);
 		
 				if ($sup){
-					header("Location: brands.php");
+					header("Location: brands.php?delsuccess=1");
 					} else {
 						echo '<p class="alert"> Une erreur est survenue impossible de supprimer cet élément</p>';}
 				}
@@ -59,8 +59,8 @@
 				
 				<p class="alert">Êtes-vous sûr de vouloir supprimer cette marque ?</p>
 				
-					<button type="submit" class="btn-delete">OUI</button>
-					<a class="btn-view" href="brands.php">NON</a>
+					<button type="submit" class="btn-delete">Valider</button>
+					<a class="btn-view" href="brands.php">Retour</a>
 			
 			</form>
 	

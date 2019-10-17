@@ -28,6 +28,8 @@
 		<div class=list>
 			<h2>CATEGORY<br><a href="addCategory.php" class="buttonAdd">+ Add</a></h2>
 				
+			<?php require_once '../successAlert.php' ?>
+			
 				<?php
 					$category= 'select id, name FROM category order by id';
 						
@@ -51,9 +53,9 @@
 							<td><?php echo $result['id']; ?></td>
 							<td><?php echo $result['name']; ?></td>
 							<td width=200>
-								<a class="btn-update" href="updateCategory.php">Modify</a>
+								<a class="btn-update" href="updateCategory.php?id=<?php echo $result['id']; ?>">Modify</a>
 								
-								<a class="btn-delete" href="deleteCategory.php?id=<?php echo $result['category.id']; ?>">Delete</a>
+								<a class="btn-delete" href="deleteCategory.php?id=<?php echo $result['id']; ?>">Delete</a>
 							</td>
 						</tr>
 					

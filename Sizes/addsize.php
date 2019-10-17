@@ -46,7 +46,7 @@
 				$insert = mysqli_query($connect, $req);
 		
 				if ($insert){
-					header("Location: sizes.php");
+					header("Location: sizes.php?addsuccess=1");
 				} else {
 				echo '<p class="alert"> Une erreur est survenue impossible de créer cet élément</p>';
 				}
@@ -57,7 +57,7 @@
 			<form class="" role="form" action="addsize.php" method="post">
 				
 				<label for="size">Taille</label>
-				<input type="text" id="size" autocomplete="off" name="size" placeholder="Nom" value="">
+				<input type="text" id="size" autocomplete="off" name="size" placeholder="Taille" value="">
 								
 					<p class="alert">Êtes-vous sûr de vouloir créer cette taille ?</p>
 				

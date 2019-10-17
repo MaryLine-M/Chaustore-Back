@@ -54,7 +54,7 @@
 		
 			?>
 				
-			<form class="" role="form" action="addStock.php" method="post">
+			<form class="" role="form" action="addStock.php?addsuccess=1" method="post">
 				
 				<label for="stock">Stock</label>
 				<input type="number" id="stock" autocomplete="off" name="stock" placeholder="stock" value="">

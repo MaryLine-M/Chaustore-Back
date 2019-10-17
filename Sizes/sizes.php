@@ -27,7 +27,9 @@
 	
 		<div class=list>
 			<h2>SIZE<br><a href="addsize.php" class="buttonAdd">+ Add</a></h2>
-				
+			
+			<?php require_once '../successAlert.php' ?>
+
 				<?php
 					$size= 'select id, name FROM size order by id';
 						
@@ -54,9 +56,9 @@
 							<td><?php echo $result['name']; ?></td>
 							
 							<td width=200>
-							<a class="btn-update" href="updatesize.php">Modify</a>
+							<a class="btn-update" href="updatesize.php?id=<?php echo $result['id']; ?>">Modify</a>
 							
-							<a class="btn-delete" href="deleteSize.php?id=<?php echo $result['size.id']; ?>">Delete</a>
+							<a class="btn-delete" href="deleteSize.php?id=<?php echo $result['id']; ?>">Delete</a>
 							</td>
 						
 						</tr>

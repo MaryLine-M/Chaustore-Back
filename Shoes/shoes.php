@@ -26,7 +26,9 @@
 		<?php require_once '../menuHead.php' ?>
 	
 		<div class=list>
-			<h2>SHOE<br><a href="addShoes.php" class="buttonAdd"> + Add</a></h2>
+			<h2>SHOES<br><a href="addShoes.php" class="buttonAdd"> + Add</a></h2>
+			
+			<?php require_once '../successAlert.php' ?>
 			
 			<?php
 				$shoes2 = "SELECT category.name as category, product.id, brand.name AS brand, color.name AS color, product.image, product.price, product.gender, product.name FROM product INNER JOIN brand ON product.brand_id = brand.id INNER JOIN color ON product.color_id = color.id INNER JOIN category ON product.category_id = category.id ORDER  BY id";

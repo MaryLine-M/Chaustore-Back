@@ -47,7 +47,7 @@
 						$sup = mysqli_query($connect, $req);
 		
 						if ($sup){
-							header("Location: categories.php");
+							header("Location: categories.php?delsuccess=1");
 						} else {
 							echo '<p class="alert"> Une erreur est survenue impossible de supprimer cet élément</p>';}
 				}
@@ -59,8 +59,8 @@
 				
 				<p class="alert">Êtes-vous sûr de vouloir supprimer cette catégorie ?</p>
 				
-					<button type="submit" class="btn-delete">OUI</button>
-					<a class="btn-view" href="categories.php">NON</a>
+					<button type="submit" class="btn-delete">Valider</button>
+					<a class="btn-view" href="categories.php">Retour</a>
 			
 			</form>
 	

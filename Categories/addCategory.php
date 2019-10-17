@@ -46,7 +46,7 @@
 				$insert = mysqli_query($connect, $req);
 		
 				if ($insert){
-					header("Location: categories.php");
+					header("Location: categories.php?addsuccess=1");
 				} else {
 				echo '<p class="alert"> Une erreur est survenue impossible de créer cet élément</p>';
 				}

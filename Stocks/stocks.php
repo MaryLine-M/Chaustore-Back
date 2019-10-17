@@ -28,6 +28,8 @@
 	
 		<div class=list>
 			<h2>STOCK<br><a href="addStock.php" class="buttonAdd">+ Add</a></h2>
+			
+			<?php require_once '../successAlert.php' ?>
 				
 			<?php
 				/*$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON stock.product_id = product_id INNER JOIN size ON stock.size_id = size_id ORDER by product_id';*/
@@ -60,7 +62,7 @@
 							<td><?php echo $result['size.id']; ?></td>
 							<td><?php echo $result['stock']; ?> </td>
 							<td width=200>";
-								<a class="btn-update" href="updateStock.php">Modify</a>
+								<a class="btn-update" href="updateStock.php?id=<?php echo $result['id']; ?>">Modify</a>
 								
 								<a class="btn-delete" href="deleteStock.php?id=<?php echo $result['stock.id']; ?>">Delete</a>
 							</td>

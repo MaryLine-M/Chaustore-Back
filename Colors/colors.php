@@ -27,6 +27,12 @@
 	
 		<div class=list>
 			<h2>COLOR<br><a href="addColor.php" class="buttonAdd">+ Add</a></h2>
+			
+			<?php require_once '../successAlert.php' ?>
+			
+			<?php if(!empty($_GET['success']) AND $_GET['success']==1){ ?>
+				<p class="alert">Votre couleur a bien été ajoutée</p>
+			<?php } ?>
 				
 			<?php
 				$colors= 'select id, name FROM color order by id';
@@ -53,7 +59,7 @@
 							<td><?php echo $result['id']; ?></td>
 							<td><?php echo $result['name']; ?></td>
 							<td width=200>
-								<a class="btn-update" href="updateColor.php">Modify</a>
+								<a class="btn-update" href="updateColor.php?id=<?php echo $result['id']; ?>">Modify</a>
 								
 								<a class="btn-delete" href="deleteColor.php?id=<?php echo $result['id']; ?>">Delete</a>
 							</td>

@@ -30,21 +30,8 @@
 <body>
     
 	<div class="container site">
-		<h1>CHAUSTORE</h1>
-				
-		<nav>
-			<ul>
-				<li><a href="shoes.php">Shoes</a></li>
-				<li><a href="../Brands/brands.php">Brands</a></li>
-				<li><a href="../Categories/categories.php" >Categories</a></li>
-				<li><a href="../Colors/colors.php">Colors</a></li>
-				<li><a href="../Sizes/sizes.php">Sizes</a></li>
-				<li><a href="../Stocks/stocks.php">Stocks</a></li>
-			</ul>
-		</nav>
 		
-	</div>
-	
+		<?php require_once '../menuHead.php'; ?>
 	
 	<div class=list>
 	
@@ -62,7 +49,7 @@
 				$gender = checkInput($_POST['gender']);
 			
 		
-				if (empty($name)){
+				/*if (empty($name)){
 				echo "Ce champs ne peut pas être vide";	
 				}
 				
@@ -78,14 +65,14 @@
 			
 				if (empty($gender)){
 				echo "Ce champs ne peut pas être vide";
-				}
+				}*/
 
 				
 				$req = "INSERT INTO product (name, category_id, brand_id, color_id, gender, price) VALUES ('$name','$category', '$brand', '$color', '$gender', '$price')";
-				$sup = mysqli_query($connect, $req);
+				$add = mysqli_query($connect, $req);
 			
-				if ($sup){
-					header("Location: shoes.php");
+				if ($add){
+					header("Location: shoes.php?addsuccess=1");
 				} else {
 					echo '<p class="alert"> Une erreur est survenue impossible de créer cet élément</p>';
 					}
@@ -103,39 +90,41 @@
 				<label for="category">Catégorie</label>
 				<select  id="category" name="category" >
 					<?php 
-						$categoryreq = "SELECT name FROM category";
+						$categoryreq = "SELECT id, name FROM category";
 						$categorysend = mysqli_query($connect,$categoryreq);
 					
 						while($category = mysqli_fetch_array($categorysend)){
-							echo "<option>$category[0]</option>";
-							}
 					?>
+							<option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+					<?php } ?>
 				</select>
 				
 				
 				<label for="brand">Marque</label>
 				<select  id="brand" name="brand" >
 					<?php 
-						$brandreq = "SELECT name FROM brand";
+						$brandreq = "SELECT id, name FROM brand";
 						$brandsend = mysqli_query($connect,$brandreq);
 					
 						while($brand = mysqli_fetch_array($brandsend)){
-							echo "<option>$brand[0]</option>";
-							}
 					?>
+							<option value="<?php echo $brand['id']; ?>"><?php echo $brand['name']; ?></option>
+							
+					<?php } ?>
 				</select>
 				
 				
 				<label for="color">Couleur</label>
 				<select  id="color" name="color">
 					<?php 
-						$colorreq = "SELECT name FROM color";
+						$colorreq = "SELECT id, name FROM color";
 						$colorsend = mysqli_query($connect,$colorreq);
 					
 						while($color = mysqli_fetch_array($colorsend)){
-							echo "<option>$color[0]</option>";
-							}
 					?>
+							<option value="<?php echo $color['id']; ?>"><?php echo $color['name']; ?></option>
+							
+					<?php } ?>
 				</select>
 				
 				<label for="gender">Type</label>
@@ -154,8 +143,9 @@
 			
 			</form>
 	
+		</div>
+
 	</div>
-	
 	
 </body>
 
