@@ -55,7 +55,18 @@ if($produit['id_color'-->
 			
 			<?php
 		
-			if(!empty($_POST)){
+			if(!empty($_GET['id'])){
+
+				$id = checkInput($_GET['id']);
+				$req = "SELECT * FROM product WHERE id = $id";
+				
+				$productReq = mysqli_query($connect,$req);
+					
+				$product= mysqli_fetch_array($productReq);		
+			}
+			?>
+			
+			<?php if(!empty($_POST)){
 			
 				$name = checkInput($_POST['name']);
 				$category = checkInput($_POST['category']);
@@ -63,7 +74,6 @@ if($produit['id_color'-->
 				$color = checkInput($_POST['color']);
 				$price = checkInput($_POST['price']);
 				$gender = checkInput($_POST['gender']);
-			
 		
 				/*if (empty($name)){
 				echo "Ce champs ne peut pas être vide";	
@@ -83,11 +93,11 @@ if($produit['id_color'-->
 				echo "Ce champs ne peut pas être vide";
 				}*/
 
-				
-				$req = "INSERT INTO product (name, category_id, brand_id, color_id, gender, price) VALUES ('$name','$category', '$brand', '$color', '$gender', '$price')";
-				$add = mysqli_query($connect, $req);
+				$req = "UPDATE product SET name = '$name', category = '$category', brand = '$brand', color = '$color', price = '$price', gender = '$gender' WHERE id = '$id' ";
+
+				$upd = mysqli_query($connect, $req);
 			
-				if ($add){
+				if ($upd){
 					header("Location: shoes.php?updsuccess=1");
 				} else {
 					?> <p class="alert"> Une erreur est survenue impossible de modifier cet élément</p>
@@ -97,21 +107,21 @@ if($produit['id_color'-->
 				
 			<form class="" role="form" action="updateShoes.php" method="post" autocomplete="off" enctype="multipart/form-data">
 				<!-- entype = pour upload des images -->
-				
 			
 				<label for="name">Nom</label>
-				<input type="text" id="name" name="name" placeholder="Nom" value="">
+				<input type="text" id="name" name="name" value="<?php echo $product['name']; ?>">
 				
 				
 				<label for="category">Catégorie</label>
-				<select  id="category" name="category" >
+				<select  id="category" name="category">
 					<?php 
 						$categoryreq = "SELECT id, name FROM category";
 						$categorysend = mysqli_query($connect,$categoryreq);
 					
 						while($category = mysqli_fetch_array($categorysend)){
+							
 					?>
-							<option value="<?php echo $category['id'] if($categoryreq['id'] == $category['id']) ?>"> selected </option>
+							<option value="<?php echo $category['id'];?>" <?php if($product['category_id'] == $category['id']) echo "selected"; ?>> <?php echo $category['name'];?> </option>
 					<?php } ?>
 				</select>
 				
@@ -123,8 +133,9 @@ if($produit['id_color'-->
 						$brandsend = mysqli_query($connect,$brandreq);
 					
 						while($brand = mysqli_fetch_array($brandsend)){
+							$id = checkInput($_GET['id']);
 					?>
-							<option value="<?php echo $brand['id']; ?>"><?php echo $brand['name']; ?></option>
+							<option value="<?php echo $brand['id'];?>" <?php if($product['brand_id'] == $brand['id']) echo "selected"; ?>> <?php echo $brand['name']; ?></option>
 							
 					<?php } ?>
 				</select>
@@ -137,17 +148,18 @@ if($produit['id_color'-->
 						$colorsend = mysqli_query($connect,$colorreq);
 					
 						while($color = mysqli_fetch_array($colorsend)){
+							$id = checkInput($_GET['id']);
 					?>
-							<option value="<?php echo $color['id']; ?>"><?php echo $color['name']; ?></option>
+							<option value="<?php echo $color['id']; ?>" <?php if ($product['color_id'] == $color['id']) echo "selected"; ?> ><?php echo $color['name']; ?></option>
 							
 					<?php } ?>
 				</select>
 				
 				<label for="gender">Type</label>
-				<input type="text" id="gender" name="gender" placeholder="type" value="">
+				<input type="text" id="gender" name="gender" value="<?php echo $product['gender']; ?>">
 				
 				<label for="price">Prix en euros</label>
-				<input type="number" step="0.01" id="price" name="price" placeholder="Prix" value="">
+				<input type="number" step="0.01" id="price" name="price" value="<?php echo $product['price']; ?>">
 				
 				<!--<label>Seléctionnez une image</label>
 				<input type="file" id="image" placeholder="image" value="">-->
@@ -162,6 +174,7 @@ if($produit['id_color'-->
 			
 			</form>
 	
+			
 		</div>
 			
 	</div>
@@ -170,5 +183,4 @@ if($produit['id_color'-->
 
 	
 </html>
-
 	

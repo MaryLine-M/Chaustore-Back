@@ -27,14 +27,13 @@
 		<?php require_once '../menuHead.php' ?>
 	
 		<div class=list>
-			<h2>STOCK<br><a href="addStock.php" class="buttonAdd">+ Add</a></h2>
+			<h2>STOCK<br><!--<a href="addStock.php" class="buttonAdd">+ Add</a>--></h2>
 			
 			<?php require_once '../successAlert.php' ?>
 				
 			<?php
-				/*$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON stock.product_id = product_id INNER JOIN size ON stock.size_id = size_id ORDER by product_id';*/
 						
-				$stocks= 'select product.name, size.name, stock FROM stock INNER JOIN product ON product_id = product.name INNER JOIN size ON size_id = size.name ORDER by product_id';
+				$stocks= 'SELECT product.name as product, size.name AS size, stock FROM stock RIGHT JOIN product ON stock.product_id = product.id LEFT JOIN size ON stock.size_id = size.id ORDER BY product.name';
 						
 				$req5 = mysqli_query($connect,$stocks);
 						//var_dump ($req5); ?>
@@ -58,13 +57,13 @@
  
   						
             			<tr>
-							<td><?php echo $result['product.id']; ?></td>
-							<td><?php echo $result['size.id']; ?></td>
+							<td><?php echo $result['product']; ?></td>
+							<td><?php echo $result['size']; ?></td>
 							<td><?php echo $result['stock']; ?> </td>
-							<td width=200>";
+							<td width=200>
 								<a class="btn-update" href="updateStock.php?id=<?php echo $result['id']; ?>">Modify</a>
 								
-								<a class="btn-delete" href="deleteStock.php?id=<?php echo $result['stock.id']; ?>">Delete</a>
+								<!--<a class="btn-delete" href="deleteStock.php?id=">Delete</a>-->
 							</td>
 						
 						</tr>

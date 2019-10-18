@@ -49,7 +49,7 @@
 				$gender = checkInput($_POST['gender']);
 			
 		
-				/*if (empty($name)){
+				if (empty($name)){
 				echo "Ce champs ne peut pas être vide";	
 				}
 				
@@ -65,8 +65,7 @@
 			
 				if (empty($gender)){
 				echo "Ce champs ne peut pas être vide";
-				}*/
-
+				}
 				
 				$req = "INSERT INTO product (name, category_id, brand_id, color_id, gender, price) VALUES ('$name','$category', '$brand', '$color', '$gender', '$price')";
 				$add = mysqli_query($connect, $req);
